@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TextBlock</string>
+    <string name="RememberMyAccount">RememberMyAccount</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="accountNameEditText_hint">Email/Phone</string>
+    <string name="passwordEditText_hint">Password</string>
+
 </resources>
