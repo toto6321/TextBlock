@@ -6,4 +6,8 @@
     <string name="accountNameEditText_hint">Email/Phone</string>
     <string name="passwordEditText_hint">Password</string>
 
+    <string name="title_activity_taken_photo">TakenPhotoActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>
