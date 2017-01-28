@@ -7,7 +7,9 @@
     <string name="passwordEditText_hint">Password</string>
 
     <string name="title_activity_taken_photo">TakenPhotoActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="lock_your_phone_Button">Lock Your Phone</string>
+    <string name="textView_status">Your phone has been locked, \nPlease focus on driving</string>
+    <string name="button_I_want_to_be_unlocked">I want to be unlocked</string>
+    <string name="button_I_want_to_be_unlocked_2">I want to be unlocked 2</string>
 
 </resources>
