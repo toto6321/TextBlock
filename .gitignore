@@ -8,6 +8,10 @@
 /captures
 .externalNativeBuild
 
+# ignore all files in .idea
 .idea/*
+
+# ignore the .gitignore itself
+.gitignore
 
 
