@@ -9,7 +9,9 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -98,10 +100,20 @@ public class TakePhotoActivity extends AppCompatActivity {
             // to ensure correct orientation of preview
 //            camera.setPreviewDisplay();
 
-            // Create our Preview view and set it as the content of our activity.
-            cameraPreview = new CameraPreview(this, camera);
-            FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-            preview.addView(cameraPreview);
+            if (camera != null) {
+                // get an instance of Camera successfully
+                // then Create our Preview view and set it as the content of our activity.
+                cameraPreview = new CameraPreview(this, camera);
+                FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+                preview.addView(cameraPreview);
+            } else {
+                // to print the failure of accessing a camera
+                TextView showCameraStatus = new TextView(this);
+                showCameraStatus.setText("Fail to access a camera.\n OpenCamera() return null.");
+                ViewGroup show = (ViewGroup) findViewById(R.id.camera_preview);
+                show.addView(showCameraStatus);
+
+            }
         } else {
             Log.d("tag", "something wrong with open a camera");
         }
