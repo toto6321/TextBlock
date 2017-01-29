@@ -88,8 +88,9 @@ public class TakePhotoActivity extends AppCompatActivity {
             Log.d("number of camera: ", String.valueOf(Camera.getNumberOfCameras()));
 
             // to create an instance of Camera
+            // to open the front-facing camera first
             try {
-                camera = Camera.open();
+                camera = Camera.open(findFrontFacingCamera());
             } catch (Exception e) {
                 Log.d("error", "Camera is occupied.");
             }
@@ -120,12 +121,49 @@ public class TakePhotoActivity extends AppCompatActivity {
     }
 
     private boolean checkCameraHardware(Context context) {
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-            return true;
-        } else {
-            return false;
-        }
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
 //        Camera.getNumberOfCameras();
+    }
+
+    private int findBackFacingCamera() {
+        int backFacingCameraID = 0;
+        boolean isCameraFound = false;
+        int numberOfCamera = Camera.getNumberOfCameras();
+        for (int i = 0; i < numberOfCamera; i++) {
+            Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+            Camera.getCameraInfo(i, cameraInfo);
+            if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+                backFacingCameraID = i;
+            }
+        }
+        if (isCameraFound) {
+            Log.d("backFacingCameraId ", Integer.toString(backFacingCameraID));
+            return backFacingCameraID;
+        } else {
+            Log.d("backFacingCameraId ", "-1");
+            return -1;
+        }
+    }
+
+    private int findFrontFacingCamera() {
+        int frontFacingCameraID = 0;
+        boolean isCameraFound = false;
+        int numberOfCamera = Camera.getNumberOfCameras();
+        for (int i = 0; i < numberOfCamera; i++) {
+            Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+            Camera.getCameraInfo(i, cameraInfo);
+            if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+                frontFacingCameraID = i;
+                isCameraFound = true;
+            }
+        }
+        if (isCameraFound) {
+            Log.d("frontFacingCameraId ", Integer.toString(frontFacingCameraID));
+            return frontFacingCameraID;
+        } else {
+            Log.d("frontFacingCameraId ", "-1");
+            return -1;
+        }
     }
 
     /**
@@ -137,5 +175,4 @@ public class TakePhotoActivity extends AppCompatActivity {
         // get data from the camera
         camera.takePicture(null, null, pictureCallback);
     }
-
 }
