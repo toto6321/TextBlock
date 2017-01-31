@@ -34,8 +34,10 @@
             </intent-filter>
         </activity>
 
-        <!-- here it request a permission to use Camera -->
+        <!-- camera permission -->
         <uses-permission android:name="android.permission.CAMERA" />
+
+        <!-- camera feature permission-->
         <uses-feature android:name="android.hardware.Camera" />
 
         <!-- storage permission to store the picture-->
